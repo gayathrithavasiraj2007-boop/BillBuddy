@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Bills — BillBuddy</title>
+
+    <link rel="stylesheet" href="my-bills.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">B</div>
+            <span>BillBuddy</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html" class="active">
+                <span class="nav-icon">▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html">
+                <span class="nav-icon">◇</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html">
+                <span class="nav-icon">◷</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html">
+                <span class="nav-icon">⚒</span>
+                Service History
+            </a>
+
+        </nav>
+
+        <div class="menu-label account-label">ACCOUNT</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="settings.html">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="login.html">
+                <span class="nav-icon">↪</span>
+                Log out
+            </a>
+
+        </nav>
+
+        <div class="secure-box">
+            <div class="secure-icon">✓</div>
+            <div>
+                <strong>Your data is secure</strong>
+                <span>Protected & private</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div></div>
+
+            <div class="profile">
+                <div class="profile-avatar">L</div>
+
+                <div class="profile-info">
+                    <strong>Welcome back</strong>
+                    <span>BillBuddy User</span>
+                </div>
+
+                <span class="profile-arrow">⌄</span>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE -->
+
+        <section class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">YOUR COLLECTION</p>
+
+                    <h1>My Bills.</h1>
+
+                    <p class="subtitle">
+                        All your purchase bills in one place.
+                    </p>
+                </div>
+
+                <a href="add-purchase.html" class="add-button">
+                    <span>+</span>
+                    Add Purchase
+                </a>
+
+            </div>
+
+
+            <!-- ================= SEARCH ================= -->
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="billSearch"
+                        placeholder="Search bills or products..."
+                    >
+
+                </div>
+
+                <select id="billFilter">
+
+                    <option value="all">All Bills</option>
+                    <option value="full">Full Payment</option>
+                    <option value="emi">EMI</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- ================= BILL LIST ================= -->
+
+            <div class="bill-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <p class="section-label">SAVED PURCHASES</p>
+                        <h2>Your Bills</h2>
+                    </div>
+
+                    <span id="billCount">0 bills</span>
+
+                </div>
+
+
+                <div id="billList" class="bill-list">
+
+                    <!-- JavaScript will load bills here -->
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+
+                <div id="emptyBills" class="empty-bills">
+
+                    <div class="empty-icon">▣</div>
+
+                    <h3>No bills yet</h3>
+
+                    <p>
+                        Add your first purchase and your bill
+                        will appear here.
+                    </p>
+
+                    <a href="add-purchase.html">
+                        Add Your First Bill →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+<script>
+
+    // ========================================
+    // MY BILLS PAGE
+    // ========================================
+
+    const billList = document.getElementById("billList");
+    const emptyBills = document.getElementById("emptyBills");
+    const billCount = document.getElementById("billCount");
+    const billSearch = document.getElementById("billSearch");
+    const billFilter = document.getElementById("billFilter");
+
+
+    function getBills() {
+
+        return JSON.parse(
+            localStorage.getItem("billbuddyPurchases")
+        ) || [];
+
+    }
+
+
+    function renderBills() {
+
+        const bills = getBills();
+
+        const searchText =
+            billSearch.value.toLowerCase().trim();
+
+        const filter =
+            billFilter.value;
+
+
+        const filteredBills = bills.filter(bill => {
+
+            const matchesSearch =
+                bill.productName
+                    .toLowerCase()
+                    .includes(searchText) ||
+
+                (bill.seller || "")
+                    .toLowerCase()
+                    .includes(searchText);
+
+
+            const matchesFilter =
+                filter === "all" ||
+
+                (filter === "emi" &&
+                    bill.paymentType === "EMI") ||
+
+                (filter === "full" &&
+                    bill.paymentType === "Full Payment");
+
+
+            return matchesSearch && matchesFilter;
+
+        });
+
+
+        billList.innerHTML = "";
+
+
+        // COUNT
+
+        billCount.textContent =
+            `${filteredBills.length} ${
+                filteredBills.length === 1
+                    ? "bill"
+                    : "bills"
+            }`;
+
+
+        // EMPTY
+
+        if (filteredBills.length === 0) {
+
+            emptyBills.style.display = "block";
+
+            return;
+
+        }
+
+        emptyBills.style.display = "none";
+
+
+        // LATEST FIRST
+
+        [...filteredBills]
+            .reverse()
+            .forEach(bill => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "bill-card";
+
+
+                card.innerHTML = `
+
+                    <div class="bill-icon">
+                        ▣
+                    </div>
+
+                    <div class="bill-details">
+
+                        <h3>
+                            ${escapeHTML(bill.productName)}
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(
+                                bill.seller ||
+                                "Store not added"
+                            )}
+                        </p>
+
+                        <span>
+                            Purchased:
+                            ${bill.purchaseDate || "N/A"}
+                        </span>
+
+                    </div>
+
+                    <div class="bill-price">
+
+                        <strong>
+                            ₹${Number(
+                                bill.price || 0
+                            ).toLocaleString("en-IN")}
+                        </strong>
+
+                        <span>
+                            ${bill.paymentType || "Full Payment"}
+                        </span>
+
+                    </div>
+
+                    <div class="bill-warranty">
+
+                        <span class="mini-label">
+                            WARRANTY
+                        </span>
+
+                        <strong>
+                            ${
+                                bill.warrantyExpiry
+                                    ? bill.warrantyExpiry
+                                    : "Not added"
+                            }
+                        </strong>
+
+                    </div>
+
+                `;
+
+
+                billList.appendChild(card);
+
+            });
+
+    }
+
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = value;
+
+        return div.innerHTML;
+
+    }
+
+
+    billSearch.addEventListener(
+        "input",
+        renderBills
+    );
+
+    billFilter.addEventListener(
+        "change",
+        renderBills
+    );
+
+
+    renderBills();
+
+</script>
+
+</body>
+</html>

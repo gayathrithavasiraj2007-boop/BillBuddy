@@ -1,0 +1,1121 @@
+/* ========================================
+   BILLBUDDY - REMINDERS
+   PREMIUM YELLOW / BLACK
+   ======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f7f6f2;
+    color: #111111;
+}
+
+
+/* ========================================
+   APP
+   ======================================== */
+
+.app {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   SIDEBAR
+   ======================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #111111;
+    color: #ffffff;
+
+    padding: 30px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 100;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 0 10px;
+
+    margin-bottom: 42px;
+}
+
+.brand-mark {
+    width: 36px;
+    height: 36px;
+
+    background: #f5b82e;
+    color: #111111;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Playfair Display", serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.brand span {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+
+/* MENU LABEL */
+
+.menu-label {
+    padding: 0 11px;
+    margin-bottom: 12px;
+
+    color: #777777;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.account-label {
+    margin-top: 34px;
+}
+
+
+/* NAV */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-nav a {
+    min-height: 43px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    border-radius: 9px;
+
+    color: #a9a9a9;
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+    background: #1d1d1d;
+    color: #ffffff;
+}
+
+.sidebar-nav a.active {
+    background: #f5b82e;
+    color: #111111;
+}
+
+.nav-icon {
+    width: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+}
+
+.logout:hover {
+    color: #ffffff;
+}
+
+
+/* SECURE BOX */
+
+.secure-box {
+    margin-top: auto;
+
+    padding: 16px 11px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    border-top: 1px solid #292929;
+}
+
+.secure-icon {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #f5b82e;
+    color: #111111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.secure-box strong {
+    display: block;
+
+    color: #eeeeee;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.secure-box span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #777777;
+
+    font-size: 9px;
+}
+
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+.main-content {
+    width: calc(100% - 250px);
+    min-height: 100vh;
+
+    margin-left: 250px;
+
+    background: #f7f6f2;
+}
+
+
+/* ========================================
+   TOP BAR
+   ======================================== */
+
+.topbar {
+    width: 100%;
+    height: 82px;
+
+    padding: 0 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #e8e6df;
+
+    background: #f7f6f2;
+}
+
+.topbar-spacer {
+    flex: 1;
+}
+
+
+/* PROFILE */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #f5b82e;
+    color: #111111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.profile-info strong {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.profile-info span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #888888;
+
+    font-size: 10px;
+}
+
+.profile-arrow {
+    margin-left: 5px;
+
+    color: #777777;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   PAGE
+   ======================================== */
+
+.page {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 48px 52px 70px;
+}
+
+
+/* ========================================
+   PAGE HEADING
+   ======================================== */
+
+.page-heading {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 32px;
+}
+
+.eyebrow {
+    margin: 0 0 9px;
+
+    color: #777777;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.page h1 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 48px;
+    line-height: 1;
+
+    font-weight: 500;
+
+    color: #111111;
+}
+
+.subtitle {
+    margin: 12px 0 0;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   ADD REMINDER
+   ======================================== */
+
+.add-reminder-btn {
+    flex-shrink: 0;
+
+    border: 0;
+
+    padding: 14px 20px;
+
+    border-radius: 8px;
+
+    background: #111111;
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.add-reminder-btn:hover {
+    background: #f5b82e;
+    color: #111111;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   SUMMARY
+   ======================================== */
+
+.summary-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    min-height: 112px;
+
+    padding: 22px 24px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #e8e6df;
+
+    border-radius: 14px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.summary-icon {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.emi-icon {
+    background: #f4eddb;
+}
+
+.warning-icon {
+    background: #f3eee5;
+}
+
+.warranty-icon {
+    background: #e7f1f5;
+}
+
+.summary-info {
+    min-width: 0;
+}
+
+.summary-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #777777;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.summary-number {
+    display: block;
+
+    color: #111111;
+
+    font-size: 27px;
+    line-height: 1;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   REMINDERS PANEL
+   ======================================== */
+
+.reminders-panel {
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e8e6df;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.reminders-header {
+    min-height: 102px;
+
+    padding: 24px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #eceae4;
+}
+
+.reminders-label {
+    margin: 0 0 6px;
+
+    color: #888888;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.reminders-header h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.reminder-count {
+    color: #888888;
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   REMINDER ROW
+   ======================================== */
+
+.reminder-list {
+    width: 100%;
+}
+
+.reminder-row {
+    width: 100%;
+    min-height: 94px;
+
+    padding: 19px 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        52px
+        minmax(200px, 1fr)
+        150px
+        140px
+        105px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid #efede8;
+
+    transition: 0.2s ease;
+}
+
+.reminder-row:last-child {
+    border-bottom: none;
+}
+
+.reminder-row:hover {
+    background: #fcfbf8;
+}
+
+
+/* ICON */
+
+.reminder-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f4eddb;
+
+    color: #111111;
+
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.reminder-icon.warranty {
+    background: #e7f1f5;
+}
+
+.reminder-icon.rent {
+    background: #f2ead8;
+}
+
+
+/* MAIN */
+
+.reminder-main {
+    min-width: 0;
+}
+
+.reminder-main strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.reminder-main span {
+    display: block;
+
+    color: #888888;
+
+    font-size: 11px;
+}
+
+
+/* DATE */
+
+.reminder-date strong {
+    display: block;
+
+    color: #222222;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.reminder-date span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #999999;
+
+    font-size: 9px;
+}
+
+
+/* DAYS */
+
+.reminder-days strong {
+    display: block;
+
+    color: #222222;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.reminder-days span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #999999;
+
+    font-size: 9px;
+}
+
+
+/* STATUS */
+
+.reminder-status {
+    justify-self: start;
+}
+
+.reminder-status span {
+    display: inline-flex;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: #f1f1ee;
+
+    color: #555555;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.reminder-status .today {
+    background: #f5b82e;
+    color: #111111;
+}
+
+.reminder-status .overdue {
+    background: #111111;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   EMPTY
+   ======================================== */
+
+.empty-reminders {
+    display: none;
+
+    padding: 65px 30px;
+
+    text-align: center;
+}
+
+.empty-icon {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f4eddb;
+
+    font-size: 20px;
+}
+
+.empty-reminders strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #333333;
+
+    font-size: 14px;
+}
+
+.empty-reminders span {
+    display: block;
+
+    color: #888888;
+
+    font-size: 11px;
+}
+
+.empty-reminders a {
+    display: inline-block;
+
+    margin-top: 17px;
+
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+.empty-reminders a:hover {
+    color: #c28a00;
+}
+
+
+/* ========================================
+   RENT MODAL
+   ======================================== */
+
+.rent-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(17, 17, 17, 0.55);
+}
+
+.rent-modal.active {
+    display: flex;
+}
+
+.rent-modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 460px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border-radius: 17px;
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+    animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.rent-close {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f2f1ed;
+
+    color: #111111;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.rent-close:hover {
+    background: #f5b82e;
+}
+
+.modal-label {
+    margin: 0 0 7px;
+
+    color: #888888;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.rent-modal-box h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 29px;
+    font-weight: 500;
+}
+
+.modal-description {
+    margin: 8px 0 22px;
+
+    color: #888888;
+
+    font-size: 12px;
+}
+
+#rentForm label {
+    display: block;
+
+    margin: 15px 0 7px;
+
+    color: #444444;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#rentForm input,
+#rentForm select {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 13px;
+
+    border: 1px solid #ddd9d0;
+
+    border-radius: 8px;
+
+    background: #faf9f6;
+
+    color: #111111;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    outline: none;
+}
+
+#rentForm input:focus,
+#rentForm select:focus {
+    border-color: #111111;
+    background: #ffffff;
+}
+
+.save-rent-btn {
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: 24px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #f5b82e;
+
+    color: #111111;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.save-rent-btn:hover {
+    background: #111111;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1150px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+    .topbar {
+        padding: 0 30px;
+    }
+
+    .page {
+        padding: 40px 30px 60px;
+    }
+
+    .reminder-row {
+        grid-template-columns:
+            50px
+            minmax(170px, 1fr)
+            125px
+            110px;
+    }
+
+    .reminder-status {
+        display: none;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        width: calc(100% - 200px);
+        margin-left: 200px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .add-reminder-btn {
+        width: 100%;
+    }
+
+    .reminder-row {
+        grid-template-columns:
+            48px
+            1fr
+            120px;
+    }
+
+    .reminder-days {
+        display: none;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        min-height: auto;
+
+        padding: 18px;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: 70px;
+        padding: 0 18px;
+    }
+
+    .page {
+        padding: 30px 18px 50px;
+    }
+
+    .page h1 {
+        font-size: 38px;
+    }
+
+    .summary-grid {
+        gap: 12px;
+    }
+
+    .reminders-header {
+        padding: 22px;
+    }
+
+    .reminder-row {
+        grid-template-columns: 45px 1fr;
+        gap: 13px;
+
+        padding: 18px 22px;
+    }
+
+    .reminder-date {
+        grid-column: 2;
+    }
+
+    .reminder-days {
+        display: block;
+        grid-column: 2;
+    }
+
+    .reminder-status {
+        display: block;
+        grid-column: 2;
+    }
+
+    .rent-modal-box {
+        padding: 26px 22px;
+    }
+}

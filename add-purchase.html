@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Purchase — BillBuddy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="add-purchase.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="logo">
+            <span>B</span>
+            BillBuddy
+        </a>
+
+        <p class="menu-label">MENU</p>
+
+        <nav class="side-nav">
+
+            <a href="dashboard.html" class="side-link">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html" class="side-link">
+                <span>▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html" class="side-link">
+                <span>♢</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html" class="side-link">
+                <span>◷</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html" class="side-link">
+                <span>⚒</span>
+                Service History
+            </a>
+
+        </nav>
+
+        <p class="menu-label second-label">ACCOUNT</p>
+
+        <nav class="side-nav">
+
+            <a href="settings.html" class="side-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="login.html" class="side-link logout">
+                <span>↪</span>
+                Log out
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="secure-icon">✓</div>
+
+            <div>
+                <strong>Your data is secure</strong>
+                <small>Protected & private</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <a href="dashboard.html" class="back-link">
+                ← Back to dashboard
+            </a>
+
+        </header>
+
+
+        <!-- PAGE -->
+        <section class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <p class="eyebrow">NEW PURCHASE</p>
+
+                    <h1>Add a <span>purchase.</span></h1>
+
+                    <p>
+                        Save your purchase, warranty and payment details
+                        in one place.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form class="purchase-form">
+
+
+                <!-- PRODUCT DETAILS -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+
+                        <div>
+                            <h2>Product details</h2>
+                            <p>Tell us about your purchase.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group full">
+                            <label>Product name</label>
+                            <input
+                                type="text"
+                                id="productName"
+                                placeholder="e.g. MacBook Air M3"
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Category</label>
+
+                            <select>
+                                <option>Select category</option>
+                                <option>Electronics</option>
+                                <option>Mobile</option>
+                                <option>Laptop</option>
+                                <option>Home Appliance</option>
+                                <option>Furniture</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Store / Seller</label>
+
+                            <input
+                                type="text"
+                                id="seller"  
+                                placeholder="e.g. Amazon"
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Purchase price</label>
+
+                            <div class="input-with-symbol">
+                                <span>₹</span>
+
+                                <input
+                                    type="number"
+                                    id="price"
+                                    placeholder="72,000"
+                                >
+                            </div>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Purchase date</label>
+
+                            <input type="date" id="purchaseDate">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WARRANTY -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+
+                        <div>
+                            <h2>Warranty</h2>
+                            <p>Never miss your warranty period.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label>Warranty period</label>
+
+                            <select>
+                                <option>Select period</option>
+                                <option>No warranty</option>
+                                <option>3 Months</option>
+                                <option>6 Months</option>
+                                <option>1 Year</option>
+                                <option>2 Years</option>
+                                <option>3 Years</option>
+                                <option>5 Years</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Warranty expiry</label>
+
+                            <input type="date" id="warrantyExpiry">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+
+                        <div>
+                            <h2>Payment & EMI</h2>
+                            <p>Track upcoming payments and EMI due dates.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="payment-types">
+
+                        <label class="payment-option active">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                checked
+                            >
+
+                            <div>
+                                <strong>Full Payment</strong>
+                                <small>Paid in full</small>
+                            </div>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                            >
+
+                            <div>
+                                <strong>EMI</strong>
+                                <small>Monthly installments</small>
+                            </div>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="form-grid emi-grid">
+
+                        <div class="input-group">
+                            <label>Monthly EMI</label>
+
+                            <div class="input-with-symbol">
+                                <span>₹</span>
+
+                                <input
+                                    type="number"
+                                    id="emiAmount"
+                                    placeholder="6,000"
+                                >
+                            </div>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>EMI duration</label>
+
+                            <select>
+                                <option>Select duration</option>
+                                <option>3 Months</option>
+                                <option>6 Months</option>
+                                <option>9 Months</option>
+                                <option>12 Months</option>
+                                <option>18 Months</option>
+                                <option>24 Months</option>
+                                <option>36 Months</option>
+                            </select>
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Next EMI due date</label>
+
+                            <input type="date" id="nextEmiDate">
+                        </div>
+
+
+                        <div class="input-group">
+                            <label>Reminder before due date</label>
+
+                            <select>
+                                <option>3 days before</option>
+                                <option>5 days before</option>
+                                <option>7 days before</option>
+                                <option>10 days before</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BILL UPLOAD -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">04</span>
+
+                        <div>
+                            <h2>Upload bill</h2>
+                            <p>Keep your invoice safe and accessible.</p>
+                        </div>
+                    </div>
+
+
+                    <label class="upload-box">
+
+                        <input type="file" accept="image/*,.pdf">
+
+                        <div class="upload-icon">↑</div>
+
+                        <strong>Upload your bill</strong>
+
+                        <span>
+                            PDF, JPG or PNG · Max 10MB
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- NOTES -->
+                <div class="form-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">05</span>
+
+                        <div>
+                            <h2>Additional notes</h2>
+                            <p>Add anything you want to remember.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <textarea
+                            placeholder="e.g. Purchased during festival sale..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+                <div class="form-actions">
+
+                    <a href="dashboard.html" class="cancel-btn">
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="save-btn">
+                        Save Purchase
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

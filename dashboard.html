@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard — BillBuddy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script src="auth.js"></script>
+
+<script>
+    if (!isLoggedIn()) {
+        window.location.href = "login.html";
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a href="index.html" class="logo">
+            <span>B</span>
+            BillBuddy
+        </a>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="side-nav">
+
+            <a href="dashboard.html" class="side-link active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html" class="side-link">
+                <span>▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html" class="side-link">
+                <span>♢</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html" class="side-link">
+                <span>◷</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html" class="side-link">
+                <span>⚒</span>
+                Service History
+            </a>
+
+        </nav>
+
+        <div class="menu-label second-label">ACCOUNT</div>
+
+        <nav class="side-nav">
+
+            <a href="#" class="side-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <a href="index.html" class="side-link logout">
+                <span>↪</span>
+                Log out
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="secure-icon">✓</div>
+            <div>
+                <strong>Your data is secure</strong>
+                <small>Protected & private</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="mobile-logo">
+                <a href="index.html" class="logo">
+                    <span>B</span>
+                    BillBuddy
+                </a>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    ♧
+                    <span></span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar">L</div>
+
+                    <div class="profile-info">
+                        <strong id="userWelcome">Welcome back</strong>
+                        <small id="userEmail">BillBuddy User</small>
+                    </div>
+
+                    <span class="profile-arrow">⌄</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD CONTENT -->
+        <section class="dashboard">
+
+            <div class="welcome-row">
+
+                <div>
+                    <p class="eyebrow">YOUR PURCHASE OVERVIEW</p>
+
+                    <h1>
+                        Good morning<span>.</span>
+                    </h1>
+
+                    <p class="welcome-text">
+                        Here's everything you need to know about your purchases.
+                    </p>
+                </div>
+
+                <a href="add-purchase.html" class="add-purchase">
+                    <span>+</span>
+                    Add Purchase
+                </a>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Bills</span>
+                        <div class="stat-icon blue">▣</div>
+                    </div>
+
+                    <div class="stat-number" id="totalBills">0</div>
+
+                    <p>
+                        <strong>0</strong> this month
+                    </p>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Active Warranties</span>
+                        <div class="stat-icon green">♢</div>
+                    </div>
+
+                    <div class="stat-number" id="activeWarranties">0</div>
+
+                    <p>
+                        <strong>0</strong> products covered
+                    </p>
+                </div>
+
+
+                <div class="stat-card warning-card">
+                    <div class="stat-top">
+                        <span>Expiring Soon</span>
+                        <div class="stat-icon orange">!</div>
+                    </div>
+
+                    <div class="stat-number" id="expiringSoon">0</div>
+
+                    <p>
+                        Within next <strong>0</strong>days
+                    </p>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Service Records</span>
+                        <div class="stat-icon purple">⚒</div>
+                    </div>
+
+                    <div class="stat-number" id="serviceRecords">0</div>
+
+                    <p>
+                        <strong>0</strong> completed this month
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- MAIN GRID -->
+            <div class="content-grid">
+
+                <!-- RECENT PURCHASES -->
+                <section class="panel purchases-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <p class="panel-label">YOUR COLLECTION</p>
+                            <h2>Recent purchases</h2>
+                        </div>
+
+                        <a href="my-bills.html">View all →</a>
+                    </div>
+
+
+                        <div class="purchase-list" id="purchaseList">
+
+    <div class="empty-state" id="emptyState">
+
+        <div>+</div>
+
+        <strong>No purchases yet</strong>
+
+        <span>
+            Add your first purchase to get started.
+        </span>
+
+        <a href="add-purchase.html">
+            Add Purchase →
+        </a>
+
+    </div>
+
+</div>
+
+                </section>
+
+
+                <!-- WARRANTY PANEL -->
+                <section class="panel warranty-panel">
+
+    <div class="panel-header">
+        <div>
+            <p class="panel-label">ATTENTION NEEDED</p>
+            <h2>Warranty alerts</h2>
+        </div>
+
+        <span class="alert-count" id="warrantyAlertCount">0</span>
+    </div>
+
+    <div class="warranty-list" id="dashboardWarrantyList">
+
+        <div class="warranty-empty">
+            <strong>No warranty alerts</strong>
+            <span>Your active warranties will appear here.</span>
+        </div>
+
+    </div>
+
+    <a href="warranties.html" class="view-warranties">
+        View all warranties <span>→</span>
+    </a>
+
+</section>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="quick-section">
+
+                <div class="panel-header">
+                    <div>
+                        <p class="panel-label">SHORTCUTS</p>
+                        <h2>Quick actions</h2>
+                    </div>
+                </div>
+
+
+                <div class="quick-grid">
+
+                    <a href="add-purchase.html" class="quick-card">
+                        <div class="quick-icon">+</div>
+                        <div>
+                            <strong>Add a purchase</strong>
+                            <span>Save a new bill</span>
+                        </div>
+                        <b>→</b>
+                    </a>
+
+
+                    <a href="my-bills.html" class="quick-card">
+                        <div class="quick-icon">▣</div>
+                        <div>
+                            <strong>Upload a bill</strong>
+                            <span>Store your receipt</span>
+                        </div>
+                        <b>→</b>
+                    </a>
+
+
+                    <a href="warranties.html" class="quick-card">
+                        <div class="quick-icon">♢</div>
+                        <div>
+                            <strong>Check warranty</strong>
+                            <span>View active coverage</span>
+                        </div>
+                        <b>→</b>
+                    </a>
+
+
+                    <a href="service-history.html" class="quick-card">
+                        <div class="quick-icon">⚒</div>
+                        <div>
+                            <strong>Service history</strong>
+                            <span>Track your repairs</span>
+                        </div>
+                        <b>→</b>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="auth.js"></script>
+
+<script>
+
+    const currentUser =
+        getCurrentUser();
+
+    if (currentUser) {
+
+        const welcome =
+            document.getElementById(
+                "userWelcome"
+            );
+
+        const email =
+            document.getElementById(
+                "userEmail"
+            );
+
+        if (welcome) {
+            welcome.textContent =
+                `Welcome back, ${currentUser.name}`;
+        }
+
+        if (email) {
+            email.textContent =
+                currentUser.email;
+        }
+
+    }
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

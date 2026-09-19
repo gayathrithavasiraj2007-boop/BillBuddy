@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login — BillBuddy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="login.css">
+
+    <script src="auth.js"></script>
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- LEFT SIDE -->
+        <section class="login-visual">
+
+            <nav class="login-nav">
+                <a href="index.html" class="logo">
+                    <span>B</span>
+                    BillBuddy
+                </a>
+
+                <a href="index.html" class="back-home">
+                    ← Back to home
+                </a>
+            </nav>
+
+            <div class="visual-content">
+
+                <p class="eyebrow">YOUR PERSONAL PURCHASE ASSISTANT</p>
+
+                <h1>
+                    Keep every
+                    <em>purchase</em>
+                    close.
+                </h1>
+
+                <p class="visual-description">
+                    Your bills, warranties and service records —
+                    organized in one simple place.
+                </p>
+
+                <div class="mini-dashboard">
+
+                    <div class="mini-top">
+                        <span>Warranty Status</span>
+                        <span class="active">● Active</span>
+                    </div>
+
+                    <div class="product-row">
+                        <div class="product-icon">⌁</div>
+
+                        <div>
+                            <strong>MacBook Air</strong>
+                            <small>Warranty • 248 days left</small>
+                        </div>
+
+                        <span class="arrow">↗</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="visual-footer">
+                <span>01</span>
+                <span>TRACK EVERYTHING</span>
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="login-form-section">
+
+            <div class="login-box">
+
+                <div class="mobile-logo">
+                    <a href="index.html" class="logo">
+                        <span>B</span>
+                        BillBuddy
+                    </a>
+                </div>
+
+                <div class="form-heading">
+                    <p class="form-label">WELCOME BACK</p>
+
+                    <h2>
+                        Sign in<span>.</span>
+                    </h2>
+
+                    <p>
+                        Enter your details to continue to your dashboard.
+                    </p>
+                </div>
+
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+                        <label for="email">Email address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="input-group">
+                        <div class="password-label">
+                            <label for="password">Password</label>
+
+                            <a href="#">Forgot password?</a>
+                        </div>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="remember">
+                        <label>
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                    </div>
+
+
+                    <button type="submit" class="signin-btn">
+                        Sign in
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+
+                <button class="google-btn" type="button">
+                    <span class="google-icon">G</span>
+                    Continue with Google
+                </button>
+
+
+                <p class="signup-text">
+                    Don't have an account?
+                    <a href="signup.html">Create an account</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    try {
+
+        await loginUser(email, password);
+
+        window.location.href = "dashboard.html";
+
+    } catch (error) {
+
+        alert(error.message);
+
+    }
+
+});
+</script>
+
+</body>
+</html>

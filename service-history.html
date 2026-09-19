@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Service History — BillBuddy</title>
+
+    <link rel="stylesheet" href="service-history.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">B</div>
+            <span>BillBuddy</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html">
+                <span class="nav-icon">▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html">
+                <span class="nav-icon">◇</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html">
+                <span class="nav-icon">◷</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html" class="active">
+                <span class="nav-icon">⚒</span>
+                Service History
+            </a>
+
+        </nav>
+
+        <div class="menu-label account-label">
+            ACCOUNT
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="settings.html">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="login.html">
+                <span class="nav-icon">↪</span>
+                Log out
+            </a>
+
+        </nav>
+
+        <div class="secure-box">
+
+            <div class="secure-icon">✓</div>
+
+            <div>
+                <strong>Your data is secure</strong>
+                <span>Protected & private</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div></div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    L
+                </div>
+
+                <div class="profile-info">
+                    <strong>Welcome back</strong>
+                    <span>BillBuddy User</span>
+                </div>
+
+                <span class="profile-arrow">⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <section class="page">
+
+            <!-- HEADING -->
+
+            <div class="page-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        PRODUCT CARE
+                    </p>
+
+                    <h1>Service History.</h1>
+
+                    <p class="subtitle">
+                        Track repairs, servicing and maintenance.
+                    </p>
+
+                </div>
+
+                <button
+                    class="add-button"
+                    onclick="openServiceForm()"
+                >
+                    <span>+</span>
+                    Add Service
+                </button>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ⚒
+                    </div>
+
+                    <div>
+                        <span>TOTAL SERVICES</span>
+                        <strong id="totalServices">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ₹
+                    </div>
+
+                    <div>
+                        <span>TOTAL SPENT</span>
+                        <strong id="totalSpent">₹0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>PRODUCTS SERVICED</span>
+                        <strong id="productsServiced">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SERVICE SECTION -->
+
+            <div class="service-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            SERVICE RECORDS
+                        </p>
+
+                        <h2>Maintenance History</h2>
+
+                    </div>
+
+                    <span id="serviceCount">
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="serviceList"
+                    class="service-list">
+                </div>
+
+
+                <!-- EMPTY STATE -->
+
+                <div
+                    id="emptyServices"
+                    class="empty-services">
+
+                    <div class="empty-icon">
+                        ⚒
+                    </div>
+
+                    <h3>No service records</h3>
+
+                    <p>
+                        Keep track of repairs and maintenance
+                        for your products.
+                    </p>
+
+                    <button onclick="openServiceForm()">
+                        Add Service Record →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- SERVICE MODAL -->
+
+<div
+    id="serviceModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <p>SERVICE RECORD</p>
+                <h2>Add Service</h2>
+            </div>
+
+            <button onclick="closeServiceForm()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="serviceForm">
+
+            <label>
+                Product Name
+
+                <input
+                    type="text"
+                    id="serviceProduct"
+                    placeholder="e.g. Samsung TV"
+                    required
+                >
+
+            </label>
+
+
+            <label>
+                Service Type
+
+                <select id="serviceType">
+
+                    <option value="Repair">
+                        Repair
+                    </option>
+
+                    <option value="Maintenance">
+                        Maintenance
+                    </option>
+
+                    <option value="Warranty Service">
+                        Warranty Service
+                    </option>
+
+                    <option value="Replacement">
+                        Replacement
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <div class="form-row">
+
+                <label>
+                    Service Date
+
+                    <input
+                        type="date"
+                        id="serviceDate"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+                    Cost
+
+                    <input
+                        type="number"
+                        id="serviceCost"
+                        placeholder="₹0"
+                        min="0"
+                    >
+
+                </label>
+
+            </div>
+
+
+            <label>
+                Service Center
+
+                <input
+                    type="text"
+                    id="serviceCenter"
+                    placeholder="e.g. Authorized Service Center"
+                >
+
+            </label>
+
+
+            <label>
+                Notes
+
+                <textarea
+                    id="serviceNotes"
+                    rows="3"
+                    placeholder="Add service details..."
+                ></textarea>
+
+            </label>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeServiceForm()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    Save Service
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="service-history.js"></script>
+
+</body>
+</html>

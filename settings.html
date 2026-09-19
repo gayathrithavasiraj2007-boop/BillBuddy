@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings — BillBuddy</title>
+
+    <link rel="stylesheet" href="settings.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">B</div>
+
+            <div>
+                <strong>BillBuddy</strong>
+                <span>Smart bill manager</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <a href="dashboard.html">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html">
+                <span>▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html">
+                <span>◷</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html">
+                <span>◉</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html">
+                <span>⚒</span>
+                Service History
+            </a>
+
+            <a href="settings.html" class="active">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="login.html" class="logout">
+                <span>↪</span>
+                Log out
+            </a>
+
+            <div class="secure">
+                <span>🔒</span>
+                Your data stays private
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-title">
+                Settings
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    U
+                </div>
+
+                <div class="profile-info">
+                    <strong>User</strong>
+                    <span>Personal account</span>
+                </div>
+
+                <span class="profile-arrow">⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">ACCOUNT</span>
+
+                    <h1>Settings.</h1>
+
+                    <p>
+                        Manage your account and BillBuddy preferences.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- PROFILE -->
+            <div class="settings-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-number">01</span>
+                        <h2>Profile</h2>
+                    </div>
+
+                    <p>Your basic account information.</p>
+                </div>
+
+                <div class="settings-card">
+
+                    <div class="avatar-large">
+                        U
+                    </div>
+
+                    <div class="profile-fields">
+
+                        <div class="field">
+                            <label>FULL NAME</label>
+                            <input
+                                type="text"
+                                id="userName"
+                                value="User"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label>EMAIL ADDRESS</label>
+                            <input
+                                type="email"
+                                id="userEmail"
+                                value="user@example.com"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTIFICATIONS -->
+            <div class="settings-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-number">02</span>
+                        <h2>Notifications</h2>
+                    </div>
+
+                    <p>Choose when BillBuddy should remind you.</p>
+                </div>
+
+
+                <div class="settings-list">
+
+                    <div class="setting-item">
+
+                        <div class="setting-icon">◷</div>
+
+                        <div class="setting-text">
+                            <strong>Warranty reminders</strong>
+
+                            <span>
+                                Get notified before a warranty expires.
+                            </span>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="warrantyNotifications"
+                                checked
+                            >
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div class="setting-icon">₹</div>
+
+                        <div class="setting-text">
+                            <strong>EMI reminders</strong>
+
+                            <span>
+                                Get notified before your EMI payment is due.
+                            </span>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="emiNotifications"
+                                checked
+                            >
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div class="setting-icon">⚒</div>
+
+                        <div class="setting-text">
+                            <strong>Service reminders</strong>
+
+                            <span>
+                                Keep track of upcoming product servicing.
+                            </span>
+                        </div>
+
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="serviceNotifications"
+                            >
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREFERENCES -->
+            <div class="settings-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-number">03</span>
+                        <h2>Preferences</h2>
+                    </div>
+
+                    <p>Customize how BillBuddy works for you.</p>
+                </div>
+
+
+                <div class="settings-card preferences">
+
+                    <div class="field">
+
+                        <label>DEFAULT CURRENCY</label>
+
+                        <select id="currency">
+                            <option value="INR">₹ Indian Rupee (INR)</option>
+                            <option value="USD">$ US Dollar (USD)</option>
+                            <option value="EUR">€ Euro (EUR)</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>REMINDER TIME</label>
+
+                        <select id="reminderTime">
+
+                            <option value="7">7 days before</option>
+                            <option value="14">14 days before</option>
+                            <option value="30">30 days before</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATA -->
+            <div class="settings-section">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-number">04</span>
+                        <h2>Your Data</h2>
+                    </div>
+
+                    <p>Manage the data stored in this browser.</p>
+                </div>
+
+
+                <div class="data-card">
+
+                    <div>
+                        <strong>BillBuddy local storage</strong>
+
+                        <span>
+                            Your purchases and service records are currently
+                            stored locally in this browser.
+                        </span>
+                    </div>
+
+                    <button
+                        class="danger-button"
+                        id="clearData"
+                    >
+                        Clear all data
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SAVE -->
+            <div class="save-area">
+
+                <span id="saveMessage">
+                    Changes are saved automatically.
+                </span>
+
+                <button
+                    class="save-button"
+                    id="saveSettings"
+                >
+                    Save Settings →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="settings.js"></script>
+
+</body>
+</html>

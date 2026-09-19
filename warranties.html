@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Warranties — BillBuddy</title>
+
+    <link rel="stylesheet" href="warranties.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">B</div>
+            <span>BillBuddy</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="my-bills.html">
+                <span class="nav-icon">▣</span>
+                My Bills
+            </a>
+
+            <a href="warranties.html" class="active">
+                <span class="nav-icon">◇</span>
+                Warranties
+            </a>
+
+            <a href="reminders.html">
+                <span class="nav-icon">◷</span>
+                Reminders
+            </a>
+
+            <a href="service-history.html">
+                <span class="nav-icon">⚒</span>
+                Service History
+            </a>
+
+        </nav>
+
+        <div class="menu-label account-label">ACCOUNT</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="settings.html">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="login.html">
+                <span class="nav-icon">↪</span>
+                Log out
+            </a>
+
+        </nav>
+
+        <div class="secure-box">
+            <div class="secure-icon">✓</div>
+
+            <div>
+                <strong>Your data is secure</strong>
+                <span>Protected & private</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div></div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">L</div>
+
+                <div class="profile-info">
+                    <strong>Welcome back</strong>
+                    <span>BillBuddy User</span>
+                </div>
+
+                <span class="profile-arrow">⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <section class="page">
+
+            <!-- HEADING -->
+
+            <div class="page-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        PROTECTION TRACKER
+                    </p>
+
+                    <h1>Warranties.</h1>
+
+                    <p class="subtitle">
+                        Keep track of every warranty in one place.
+                    </p>
+
+                </div>
+
+                <a href="add-purchase.html" class="add-button">
+                    <span>+</span>
+                    Add Purchase
+                </a>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">✓</div>
+
+                    <div>
+                        <span>ACTIVE</span>
+                        <strong id="activeWarrantyCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card warning">
+
+                    <div class="summary-icon">!</div>
+
+                    <div>
+                        <span>EXPIRING SOON</span>
+                        <strong id="expiringWarrantyCount">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card expired">
+
+                    <div class="summary-icon">×</div>
+
+                    <div>
+                        <span>EXPIRED</span>
+                        <strong id="expiredWarrantyCount">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WARRANTY LIST -->
+
+            <div class="warranty-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            WARRANTY OVERVIEW
+                        </p>
+
+                        <h2>Your Warranties</h2>
+
+                    </div>
+
+                    <span id="warrantyCount">
+                        0 warranties
+                    </span>
+
+                </div>
+
+
+                <div id="warrantyList"
+                     class="warranty-list">
+                </div>
+
+
+                <!-- EMPTY -->
+
+                <div id="emptyWarranties"
+                     class="empty-warranties">
+
+                    <div class="empty-icon">
+                        ◇
+                    </div>
+
+                    <h3>No warranties yet</h3>
+
+                    <p>
+                        Add a purchase with warranty details
+                        to track it here.
+                    </p>
+
+                    <a href="add-purchase.html">
+                        Add Purchase →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    // ========================================
+    // BILLBUDDY - WARRANTIES
+    // ========================================
+
+    const warrantyList =
+        document.getElementById("warrantyList");
+
+    const emptyWarranties =
+        document.getElementById("emptyWarranties");
+
+    const warrantyCount =
+        document.getElementById("warrantyCount");
+
+    const activeWarrantyCount =
+        document.getElementById("activeWarrantyCount");
+
+    const expiringWarrantyCount =
+        document.getElementById("expiringWarrantyCount");
+
+    const expiredWarrantyCount =
+        document.getElementById("expiredWarrantyCount");
+
+
+    const purchases =
+        JSON.parse(
+            localStorage.getItem("billbuddyPurchases")
+        ) || [];
+
+
+    // Only purchases having warranty expiry
+    const warranties =
+        purchases.filter(
+            purchase => purchase.warrantyExpiry
+        );
+
+
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
+    let active = 0;
+    let expiring = 0;
+    let expired = 0;
+
+
+    warrantyList.innerHTML = "";
+
+
+    warranties
+        .slice()
+        .reverse()
+        .forEach(warranty => {
+
+            const expiryDate =
+                new Date(warranty.warrantyExpiry);
+
+            expiryDate.setHours(0, 0, 0, 0);
+
+
+            const difference =
+                Math.ceil(
+                    (expiryDate - today) /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            let status = "";
+            let statusClass = "";
+
+
+            if (difference < 0) {
+
+                status = "Expired";
+                statusClass = "expired-status";
+
+                expired++;
+
+            }
+
+            else if (difference <= 30) {
+
+                status = "Expiring Soon";
+                statusClass = "warning-status";
+
+                expiring++;
+
+            }
+
+            else {
+
+                status = "Active";
+                statusClass = "active-status";
+
+                active++;
+
+            }
+
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "warranty-card";
+
+
+            card.innerHTML = `
+
+                <div class="warranty-icon">
+                    ◇
+                </div>
+
+
+                <div class="warranty-product">
+
+                    <strong>
+                        ${escapeHTML(
+                            warranty.productName
+                        )}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(
+                            warranty.seller ||
+                            "Store not added"
+                        )}
+                    </span>
+
+                </div>
+
+
+                <div class="warranty-date">
+
+                    <span>
+                        EXPIRES
+                    </span>
+
+                    <strong>
+                        ${warranty.warrantyExpiry}
+                    </strong>
+
+                </div>
+
+
+                <div class="warranty-days">
+
+                    ${
+                        difference < 0
+                            ? `<strong>
+                                ${Math.abs(difference)} days ago
+                               </strong>`
+                            : `<strong>
+                                ${difference} days
+                               </strong>`
+                    }
+
+                    <span>
+                        ${
+                            difference < 0
+                                ? "Warranty ended"
+                                : "remaining"
+                        }
+                    </span>
+
+                </div>
+
+
+                <div class="warranty-status ${statusClass}">
+                    ${status}
+                </div>
+
+            `;
+
+
+            warrantyList.appendChild(card);
+
+        });
+
+
+    // ========================================
+    // COUNTS
+    // ========================================
+
+    activeWarrantyCount.textContent =
+        active;
+
+    expiringWarrantyCount.textContent =
+        expiring;
+
+    expiredWarrantyCount.textContent =
+        expired;
+
+
+    warrantyCount.textContent =
+        `${warranties.length} ${
+            warranties.length === 1
+                ? "warranty"
+                : "warranties"
+        }`;
+
+
+    // ========================================
+    // EMPTY STATE
+    // ========================================
+
+    if (warranties.length === 0) {
+
+        emptyWarranties.style.display =
+            "block";
+
+    } else {
+
+        emptyWarranties.style.display =
+            "none";
+
+    }
+
+
+    // ========================================
+    // SECURITY
+    // ========================================
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = value;
+
+        return div.innerHTML;
+
+    }
+
+</script>
+
+</body>
+</html>
